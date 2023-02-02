@@ -87,7 +87,10 @@ module hdmi
     output logic [BIT_WIDTH-1:0] frame_width,
     output logic [BIT_HEIGHT-1:0] frame_height,
     output logic [BIT_WIDTH-1:0] screen_width,
-    output logic [BIT_HEIGHT-1:0] screen_height
+    output logic [BIT_HEIGHT-1:0] screen_height,
+    
+    output logic vsync_out,
+    output logic hsync_out
 );
 
 localparam int NUM_CHANNELS = 3;
@@ -97,6 +100,9 @@ logic vsync;
 logic [BIT_WIDTH-1:0] hsync_pulse_start, hsync_pulse_size;
 logic [BIT_HEIGHT-1:0] vsync_pulse_start, vsync_pulse_size;
 logic invert;
+
+assign vsync_out = vsync;
+assign hsync_out = hsync;
 
 // See CEA-861-D for more specifics formats described below.
 generate
